@@ -3,7 +3,7 @@ name = "vtracer-worker"
 version = "0.0.0"
 edition = "2021"
 authors = ["Scott Fryxell <sfryxell@me.com>"]
-license = "MIT OR Apache-2.0"
+license = "MIT"
 keywords = ["svg", "computer-graphics", "vector-graphics", "path-tracing", "wasm", "web-programming"]
 categories = ["graphics", "web-programming"]
 
