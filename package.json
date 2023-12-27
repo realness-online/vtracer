@@ -1,0 +1,10 @@
+{
+  "name": "vtracer-worker",
+  "version": "0.0.0",
+  "description": "Convert binary images into color SVG",
+  "main": "console.js",
+  "repository": "git@github.com:realness-online/vtracer-worker.git",
+  "author": "Scott Fryxell <sfryxell@me.com>",
+  "license": "MIT",
+  "private": false
+}
