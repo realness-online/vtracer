@@ -1,1 +1,1 @@
-import { BinaryImageConverter, ColorImageConverter } from 'vtracer';
+import { trace } from 'vtracer';
