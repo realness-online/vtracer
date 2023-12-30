@@ -2,16 +2,12 @@ use wasm_bindgen::prelude::*;
 use visioncortex::PathSimplifyMode;
 use visioncortex::color_clusters::{IncrementalBuilder, Clusters, Runner, RunnerConfig, HIERARCHICAL_MAX};
 
-use crate::canvas::*;
-use crate::svg::*;
 
 use serde::Deserialize;
 use super::util;
 
 #[derive(Debug, Deserialize)]
-pub struct ColorImageConverterParams {
-  pub canvas_id: String,
-  pub svg_id: String,
+pub struct Parameters {
   pub mode: String,
   pub hierarchical: String,
   pub corner_threshold: f64,
@@ -25,13 +21,11 @@ pub struct ColorImageConverterParams {
 }
 
 #[wasm_bindgen]
-pub struct ColorImageConverter {
-  canvas: Canvas,
-  svg: Svg,
+pub struct Tracer {
   stage: Stage,
   counter: usize,
   mode: PathSimplifyMode,
-  params: ColorImageConverterParams,
+  params: Parameters,
 }
 
 pub enum Stage {
@@ -41,14 +35,11 @@ pub enum Stage {
   Vectorize(Clusters),
 }
 
-impl ColorImageConverter {
-  pub fn new(params: ColorImageConverterParams) -> Self {
-    let canvas = Canvas::new_from_id(&params.canvas_id);
-    let svg = Svg::new_from_id(&params.svg_id);
+impl Tracer {
+  pub fn new(params: Parameters) -> Self {
     Self {
       width,
       height,
-      svg,
       stage: Stage::New,
       counter: 0,
       mode: util::path_simplify_mode(&params.mode),
@@ -58,7 +49,7 @@ impl ColorImageConverter {
 }
 
 #[wasm_bindgen]
-impl ColorImageConverter {
+impl Tracer {
 
   pub fn init(&mut self) {
     let width = self.width;
@@ -131,11 +122,7 @@ impl ColorImageConverter {
             self.params.max_iterations,
             self.params.splice_threshold
           );
-          self.svg.prepend_path(
-            &paths,
-            &cluster.residue_color(),
-            Some(self.params.path_precision),
-          );
+          println!("Paths $1", paths);
           self.counter += 1;
           false
         } else {
