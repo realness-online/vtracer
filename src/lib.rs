@@ -1,12 +1,10 @@
 use wasm_bindgen::prelude::*;
 use visioncortex::PathSimplifyMode;
 use visioncortex::color_clusters::{IncrementalBuilder, Clusters, Runner, RunnerConfig, HIERARCHICAL_MAX};
-
-
-use serde::Deserialize;
+// use serde::Deserialize;
 use super::util;
 
-#[derive(Debug, Deserialize)]
+// #[derive(Debug, Deserialize)]
 pub struct Parameters {
   pub mode: String,
   pub hierarchical: String,
@@ -20,12 +18,16 @@ pub struct Parameters {
   pub path_precision: u32,
 }
 
-#[wasm_bindgen]
 pub struct Tracer {
   stage: Stage,
   counter: usize,
   mode: PathSimplifyMode,
   params: Parameters,
+}
+
+#[wasm_bindgen]
+pub fn as_paths() -> String {
+  "Hello, World!".to_string()
 }
 
 pub enum Stage {
@@ -38,9 +40,7 @@ pub enum Stage {
 impl Tracer {
   pub fn new(params: Parameters) -> Self {
     Self {
-      width,
-      height,
-      stage: Stage::New,
+     stage: Stage::New,
       counter: 0,
       mode: util::path_simplify_mode(&params.mode),
       params,
@@ -48,7 +48,6 @@ impl Tracer {
   }
 }
 
-#[wasm_bindgen]
 impl Tracer {
 
   pub fn init(&mut self) {
@@ -122,7 +121,7 @@ impl Tracer {
             self.params.max_iterations,
             self.params.splice_threshold
           );
-          println!("Paths $1", paths);
+          println!("Paths {}", paths);
           self.counter += 1;
           false
         } else {
