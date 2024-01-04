@@ -2,7 +2,10 @@ use wasm_bindgen::prelude::*;
 use visioncortex::PathSimplifyMode;
 use visioncortex::color_clusters::{IncrementalBuilder, Clusters, Runner, RunnerConfig, HIERARCHICAL_MAX};
 // use serde::Deserialize;
-use super::util;
+
+// "polygon" => PathSimplifyMode::Polygon,
+// "spline" => PathSimplifyMode::Spline,
+// "none" => PathSimplifyMode::None,
 
 // #[derive(Debug, Deserialize)]
 pub struct Parameters {
@@ -26,8 +29,10 @@ pub struct Tracer {
 }
 
 #[wasm_bindgen]
-pub fn as_paths() -> String {
-  "Hello, World!".to_string()
+pub fn as_paths(pixels: Vec<u8>,  width: usize,  height: usize) -> String {
+  println!("pixels: {:?}", pixels);
+  println!("width: {:?}", width);
+  println!("height: {:?}", height);
 }
 
 pub enum Stage {
@@ -42,7 +47,7 @@ impl Tracer {
     Self {
      stage: Stage::New,
       counter: 0,
-      mode: util::path_simplify_mode(&params.mode),
+      mode: PathSimplifyMode::Polygon,
       params,
     }
   }
