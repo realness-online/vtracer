@@ -1,5 +1,5 @@
 {
-  "name": "vtracer-worker",
+  "name": "realness-vtracer",
   "version": "0.0.0",
   "description": "Convert binary images into color SVG",
   "main": "console.js",
