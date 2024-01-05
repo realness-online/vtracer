@@ -7,7 +7,7 @@ authors = ["Scott Fryxell <sfryxell@me.com>"]
 license = "MIT"
 keywords = ["svg", "computer-graphics", "vector-graphics", "path-tracing", "wasm", "web-programming"]
 categories = ["graphics", "web-programming"]
-repository = "https://github.com/realness/vtracer"
+repository = "https://github.com/realness-online/vtracer"
 
 # https://doc.rust-lang.org/cargo/reference/manifest.html
 
