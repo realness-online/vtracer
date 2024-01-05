@@ -1,7 +1,8 @@
 [package]
-name = "@realness:vtracer"
+name = "vtracer"
 version = "0.0.0"
 edition = "2021"
+description = "A wasm library for rendering SVG paths with vtracer"
 authors = ["Scott Fryxell <sfryxell@me.com>"]
 license = "MIT"
 keywords = ["svg", "computer-graphics", "vector-graphics", "path-tracing", "wasm", "web-programming"]
