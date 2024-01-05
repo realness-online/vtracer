@@ -1,4 +1,5 @@
 /target
 .DS_STORE
 docs/
-/pkg
+@realness.online
+Cargo.lock
